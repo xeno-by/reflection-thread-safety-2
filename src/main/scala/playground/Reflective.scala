@@ -8,7 +8,7 @@ object Reflective {
 
   def bind[T](values: ValueProvider[_])(implicit ct: TypeTag[T]): T = bindType(ct.tpe, values).asInstanceOf[T]
 
-  def bindType(tpe: Type, values: ValueProvider[_]): Any = synchronized {
+  def bindType(tpe: Type, values: ValueProvider[_]): Any = {
     val klazz = cm.reflectClass(tpe.typeSymbol.asClass)
     val csym = klazz.symbol
 
